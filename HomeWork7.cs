@@ -98,6 +98,30 @@ void Show2dArray(int[,] array2d)
             Console.WriteLine();  
         }
 }
+int [] MidleSumInColums(int[,] array2d)
+{
+    int[] answerArray = new int[array2d.GetLength(1)];
+    int a = 0;
+    for(int j = 0; j < array2d.GetLength(1); j++)
+        {
+            for(int i = 0; i < array2d.GetLength(0); i++)
+            {
+                answerArray[a] += array2d[i,j];
+            }
+            answerArray[a] /= array2d.GetLength(0);
+            a++;
+        }
+        return answerArray;
+}
+
+void ShowArray(int[] array)
+{
+    Console.WriteLine("Midle sum in colums is: ");
+    for(int i = 0; i < array.Length; i++)
+    {
+        Console.Write ($"{array[i]} ");
+    }
+}
 
 Console.WriteLine("input number of rows ");
 int rows = Convert.ToInt32(Console.ReadLine());
@@ -106,4 +130,7 @@ int colums = Convert.ToInt32(Console.ReadLine());
 
 int[,] array2d = Create2dAray(rows, colums);
 Show2dArray(array2d);
+Console.WriteLine();
 
+int [] answeArray = MidleSumInColums(array2d);
+ShowArray(answeArray);
